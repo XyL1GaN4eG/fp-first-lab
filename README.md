@@ -1,4 +1,6 @@
 # Лабораторная работа №1 — Простые алгоритмы (OCaml)
+Жук И. А., isu: 408614, P3315
+
 
 [![CI](https://github.com/XyL1GaN4eG/fp-first-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/XyL1GaN4eG/fp-first-lab/actions/workflows/ci.yml)
 
