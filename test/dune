@@ -1,0 +1,7 @@
+(test
+ (name euler7_test)
+ (libraries fp_first_lab alcotest))
+
+(test
+ (name euler24_test)
+ (libraries fp_first_lab alcotest))

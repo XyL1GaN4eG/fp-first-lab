@@ -1,0 +1,3 @@
+(library
+ (name fp_first_lab)
+ (flags (:standard -w +a -warn-error +a)))
