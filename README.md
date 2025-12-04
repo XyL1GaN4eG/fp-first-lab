@@ -1,5 +1,7 @@
 # Лабораторная работа №1 — Простые алгоритмы (OCaml)
 
+[![CI](https://github.com/XyL1GaN4eG/fp-first-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/XyL1GaN4eG/fp-first-lab/actions/workflows/ci.yml)
+
 ## Титульный лист
 
 - Дисциплина: Функциональное программирование, ЛР1.
