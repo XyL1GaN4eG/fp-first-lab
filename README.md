@@ -2,15 +2,14 @@
 
 [![CI](https://github.com/XyL1GaN4eG/fp-first-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/XyL1GaN4eG/fp-first-lab/actions/workflows/ci.yml)
 
-## Титульный лист
-
-- Дисциплина: Функциональное программирование, ЛР1.
-- Вариант: Project Euler #7 — поиск 10 001-го простого числа (в исходнике `euler7.md` есть опечатка: 6-е простое — 13, не 25).
-- Технологии: OCaml 5.3 (официальный компилятор), dune, ocamlformat, merlin/ocaml-lsp, тесты на Alcotest.
+- Варианты:
+  - Project Euler #7 — поиск 10 001-го простого числа;
+  - Project Euler #24 — миллионная лексикографическая перестановка цифр `0..9`.
 
 ## Описание задачи
 
-Нужно получить 10 001-е простое число, продемонстрировав разные приёмы ФП: хвостовая и обычная рекурсия, модульный конвейер с filter/fold, использование map, императивный синтаксис циклов и ленивые последовательности.
+1) Euler #7: получить 10 001-е простое число, продемонстрировав разные приёмы ФП: хвостовая и обычная рекурсия, модульный конвейер с filter/fold, использование map, императивный синтаксис циклов и ленивые последовательности.
+2) Euler #24: найти миллионную лексикографическую перестановку цифр `0..9`, показав факториадную декомпозицию, императивный алгоритм next-permutation и ленивые последовательности.
 
 ## Реализации (ключевые элементы)
 
@@ -46,6 +45,24 @@ let tail_recursive n =
       search next_count (candidate + 1) next_last
   in
   search 0 2 0
+```
+
+### Пример: факториадная позиция (Euler #24)
+
+```ocaml
+let tail_recursive n =
+  validate_n n;
+  let rec build idx pool acc =
+    match pool with
+    | [] -> digits_to_string (List.rev acc)
+    | _ ->
+        let fact = factorial (List.length pool - 1) in
+        let choice = idx / fact in
+        let remainder = idx mod fact in
+        let picked, rest = remove_at choice pool in
+        build remainder rest (picked :: acc)
+  in
+  build (n - 1) digits []
 ```
 
 ## Запуск и тестирование
