@@ -1,9 +1,4 @@
 #!/usr/bin/env python3
-"""
-Reference implementations of Project Euler #7 and #24 in Python.
-Used to cross-check the OCaml solutions with a straightforward imperative style.
-"""
-
 from __future__ import annotations
 
 import argparse
