@@ -17,6 +17,11 @@ let validate_n n =
   if n < 1 || n > total_permutations then
     invalid_arg "n must be within the range of available permutations"
 
+let nth_from_seq n seq =
+  seq |> Seq.drop (n - 1) |> Seq.uncons |> function
+  | Some (value, _) -> value
+  | None -> invalid_arg "sequence is shorter than expected"
+
 let remove_at index lst =
   let rec aux i acc = function
     | [] -> invalid_arg "index out of bounds"
@@ -160,7 +165,7 @@ let permutations_seq () =
 
 let lazy_seq_based n =
   validate_n n;
-  permutations_seq () |> Seq.take n |> Seq.fold_left (fun _ p -> p) ""
+  permutations_seq () |> nth_from_seq n
 
 let solutions =
   [

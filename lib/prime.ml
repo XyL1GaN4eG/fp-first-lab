@@ -8,7 +8,7 @@ let is_prime n =
   n > 1 && loop 2
 
 let rec next_prime n = if is_prime n then n else next_prime (n + 1)
-let ints_from start = Seq.unfold (fun i -> Some (i, i + 1)) start
+let ints_from start = Seq.ints start
 
 let primes_seq () =
   let rec step candidate () =

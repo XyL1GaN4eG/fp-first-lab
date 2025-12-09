@@ -9,5 +9,5 @@ val mapped_generation : int -> string
 val loop_based : int -> string
 val lazy_seq_based : int -> string
 
-val solutions : solution list
 (** All available implementations. *)
+val solutions : solution list

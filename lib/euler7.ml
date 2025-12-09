@@ -8,6 +8,11 @@ let expected_answer = 104_743
 let validate_n n =
   if n < 1 then invalid_arg "n must be a positive index for a prime number"
 
+let nth_from_seq n seq =
+  seq |> Seq.drop (n - 1) |> Seq.uncons |> function
+  | Some (value, _) -> value
+  | None -> invalid_arg "sequence is shorter than expected"
+
 let tail_recursive n =
   validate_n n;
   let rec search count candidate last_prime =
@@ -34,15 +39,14 @@ let plain_recursive n =
 
 let modular_pipeline n =
   validate_n n;
-  ints_from 2 |> Seq.filter is_prime |> Seq.take n
-  |> Seq.fold_left (fun _ prime -> prime) 0
+  ints_from 2 |> Seq.filter is_prime |> nth_from_seq n
 
 let mapped_generation n =
   validate_n n;
   ints_from 2
   |> Seq.map (fun candidate -> (candidate, is_prime candidate))
-  |> Seq.filter snd |> Seq.take n
-  |> Seq.fold_left (fun _ (prime, _) -> prime) 0
+  |> Seq.filter snd |> Seq.map fst
+  |> nth_from_seq n
 
 let loop_based n =
   validate_n n;
@@ -59,7 +63,7 @@ let loop_based n =
 
 let lazy_seq_based n =
   validate_n n;
-  primes_seq () |> Seq.take n |> Seq.fold_left (fun _ prime -> prime) 0
+  primes_seq () |> nth_from_seq n
 
 let solutions =
   [
