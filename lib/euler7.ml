@@ -45,8 +45,7 @@ let mapped_generation n =
   validate_n n;
   ints_from 2
   |> Seq.map (fun candidate -> (candidate, is_prime candidate))
-  |> Seq.filter snd |> Seq.map fst
-  |> nth_from_seq n
+  |> Seq.filter snd |> Seq.map fst |> nth_from_seq n
 
 let loop_based n =
   validate_n n;

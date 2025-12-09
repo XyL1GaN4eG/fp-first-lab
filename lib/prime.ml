@@ -9,5 +9,4 @@ let is_prime n =
 
 let rec next_prime n = if is_prime n then n else next_prime (n + 1)
 let ints_from start = Seq.ints start
-
 let primes_seq () = ints_from 2 |> Seq.filter is_prime
