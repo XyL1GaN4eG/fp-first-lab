@@ -1,5 +1,7 @@
 type solution = { id : string; description : string; solver : int -> string }
 
+open Util
+
 let digits = [ 0; 1; 2; 3; 4; 5; 6; 7; 8; 9 ]
 let target_n = 1_000_000
 let expected_answer = "2783915460"
@@ -16,11 +18,6 @@ let total_permutations = factorial (List.length digits)
 let validate_n n =
   if n < 1 || n > total_permutations then
     invalid_arg "n must be within the range of available permutations"
-
-let nth_from_seq n seq =
-  seq |> Seq.drop (n - 1) |> Seq.uncons |> function
-  | Some (value, _) -> value
-  | None -> invalid_arg "sequence is shorter than expected"
 
 let remove_at index lst =
   let rec aux i acc = function

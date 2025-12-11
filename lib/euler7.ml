@@ -1,4 +1,5 @@
 open Prime
+open Util
 
 type solution = { id : string; description : string; solver : int -> int }
 
@@ -7,11 +8,6 @@ let expected_answer = 104_743
 
 let validate_n n =
   if n < 1 then invalid_arg "n must be a positive index for a prime number"
-
-let nth_from_seq n seq =
-  seq |> Seq.drop (n - 1) |> Seq.uncons |> function
-  | Some (value, _) -> value
-  | None -> invalid_arg "sequence is shorter than expected"
 
 let tail_recursive n =
   validate_n n;
